@@ -29,4 +29,6 @@ add_global_arguments('-DHAVE_CONFIG_H', language : 'c')
 shared_library('gstzmq',
     sources: src,
     include_directories: inc,
-    dependencies: [ dep1, dep2, dep3, dep4 ])
+    dependencies: [ dep1, dep2, dep3, dep4 ],
+    install : true,
+    install_dir: dep1.get_pkgconfig_variable('pluginsdir'))
