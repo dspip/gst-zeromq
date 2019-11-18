@@ -10,8 +10,7 @@ configure_file(
     configuration : conf_data)
 
 inc = include_directories([
-    'src/zeromq',
-    'mybuild'
+    'src/zeromq'
 ])
 
 src = [
