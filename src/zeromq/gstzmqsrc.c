@@ -73,6 +73,7 @@ static GstFlowReturn gst_zmq_src_create (GstPushSrc * psrc,
     GstBuffer ** outbuf);
 static gboolean gst_zmq_src_stop (GstBaseSrc * bsrc);
 static gboolean gst_zmq_src_start (GstBaseSrc * bsrc);
+static gboolean gst_zmq_src_is_seekable (GstBaseSrc * bsrc);
 static GstStateChangeReturn gst_zmq_src_change_state (GstElement * element,
     GstStateChange transition);
 
@@ -125,6 +126,7 @@ gst_zmq_src_class_init (GstZmqSrcClass * klass)
   gstbasesrc_class->get_caps = GST_DEBUG_FUNCPTR (gst_zmq_src_getcaps);
   gstbasesrc_class->start = GST_DEBUG_FUNCPTR (gst_zmq_src_start);
   gstbasesrc_class->stop = GST_DEBUG_FUNCPTR (gst_zmq_src_stop);
+  gstbasesrc_class->is_seekable = GST_DEBUG_FUNCPTR (gst_zmq_src_is_seekable);
 
   gstpush_src_class->create = GST_DEBUG_FUNCPTR (gst_zmq_src_create);
 
@@ -298,6 +300,18 @@ gst_zmq_src_stop (GstBaseSrc * bsrc)
   GST_DEBUG_OBJECT (src, "stopping");
 
   return TRUE;
+}
+
+static gboolean
+gst_zmq_src_is_seekable (GstBaseSrc * bsrc)
+{
+  GstZmqSrc *src;
+
+  src = GST_ZMQ_SRC (bsrc);
+
+  GST_DEBUG_OBJECT (src, "non-seekable");
+
+  return FALSE;
 }
 
 static gboolean
