@@ -28,7 +28,7 @@ autoregen.sh
 ABOUT-NLS
 /INSTALL
 _stdint.h
-
+/build
 gst-zeromq-*.tar*
 
 .deps

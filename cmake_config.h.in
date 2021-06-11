@@ -1,0 +1,5 @@
+#pragma once
+
+#cmakedefine GST_LICENSE "@GST_LICENSE@"
+#cmakedefine VERSION "@VERSION@"
+#cmakedefine PACKAGE "@PACKAGE@"
